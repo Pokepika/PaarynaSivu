@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Cool Website</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+function myFunction() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Numero on yli tai kirjain";
+  } else {
+    text = "Numero on alle 10";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+</head>
+<body>
+<header>
+  <h2>Starting Page</h2>
+</header>
+
+<h2>Assigments</h2>
+
+<ul>
+  <li><a href="webpage.html">Assigment 1</a></li>
+  <li><a href="vili1">Vilin Projekti 1</a></li>
+  <li><a href="vili2">Vilin Projekti 2</a></li>
+  <li><a href="annika1">Annikan Projekti 1</a></li>
+  <li><a href="annika2">Annikan Projekti 2</a></li>
+</ul>
+
+<section>
+  <article>
+    <h1>Moi</h1>
+		<img id = "parrot" src="parrot.png" draggable="true" ondragstart="drag(event)">
+		<p>Miten menee?</p>
+		
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		<br>
+		<p>Papukaijan voi vetää tähän</p>
+  </article>
+</section>
+
+<table style="width:100%">
+<tr>
+	<th>Papukaijan Nimi</th>
+	<th>Arvio</th>
+</tr>
+<tr>
+	<th>Undulaatti</th>
+	<th>7/10</th>
+</tr>
+<tr>
+	<th>Kakadu</th>
+	<th>9/10</th>
+</tr>
+</table>
+
+<p>Javascript numerotesting</p>
+<input id="numb">
+<button type="button" onclick="myFunction()">Submit</button>
+<p id="demo"></p>
+
+<iframe width="420" height="345" src="https://www.youtube.com/embed/6EKYcAS_2ys?playlist=6EKYcAS_2ys&loop=1?controls=1">
+</iframe>
+
+<button onclick="getLocation()">Get Location</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+<footer>
+  <p>Tervemenoa</p>
+</footer>
+
+</body>
+</html>
